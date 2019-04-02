@@ -1,3 +1,5 @@
+[![](https://images.microbadger.com/badges/version/veonua/jwt_auth.svg)](https://microbadger.com/images/veonua/jwt_auth)
+
 # JWT Authentication for K8s ingress
 
 Simple external authentication microservice for a Nginx. 

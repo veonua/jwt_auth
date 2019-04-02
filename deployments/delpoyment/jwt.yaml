@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: jwt
-          image: "veonua/jwt:latest"
+          image: "veonua/jwt_auth:latest"
           imagePullPolicy: Always
           ports:
             - name: http
