@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "jwt_auth.fullname" . }}-configmap
+  name: {{ template "jwt-auth.fullname" . }}-configmap
   labels:
     heritage: {{ .Release.Service }}
     release: {{ .Release.Name }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    app: {{ template "jwt_auth.fullname" . }}
+    app: {{ template "jwt-auth.fullname" . }}
 data:
   {{- range $key, $value := .Values.appsettings }}
   {{ $key }}: {{ $value | quote }}

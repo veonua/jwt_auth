@@ -1,12 +1,12 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "jwt_auth.fullname" . -}}
+{{- $fullName := include "jwt-auth.fullname" . -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    app.kubernetes.io/name: {{ include "jwt_auth.name" . }}
-    helm.sh/chart: {{ include "jwt_auth.chart" . }}
+    app.kubernetes.io/name: {{ include "jwt-auth.name" . }}
+    helm.sh/chart: {{ include "jwt-auth.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
   {{- with .Values.ingress.annotations }}

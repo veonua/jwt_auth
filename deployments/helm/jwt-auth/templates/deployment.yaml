@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "jwt_auth.fullname" . }}
+  name: {{ include "jwt-auth.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "jwt_auth.name" . }}
-    helm.sh/chart: {{ include "jwt_auth.chart" . }}
+    app.kubernetes.io/name: {{ include "jwt-auth.name" . }}
+    helm.sh/chart: {{ include "jwt-auth.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "jwt_auth.name" . }}
+      app.kubernetes.io/name: {{ include "jwt-auth.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "jwt_auth.name" . }}
+        app.kubernetes.io/name: {{ include "jwt-auth.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
@@ -25,10 +25,10 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - configMapRef:
-                name: {{ template "jwt_auth.fullname" . }}-configmap
+                name: {{ template "jwt-auth.fullname" . }}-configmap
           ports:
             - name: http
-              containerPort: 80
+              containerPort: {{ .Values.appsettings.JWT_SERVER_PORT }}
               protocol: TCP
           livenessProbe:
             httpGet:

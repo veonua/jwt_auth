@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "jwt_auth.fullname" . }}
+  name: {{ include "jwt-auth.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "jwt_auth.name" . }}
-    helm.sh/chart: {{ include "jwt_auth.chart" . }}
+    app.kubernetes.io/name: {{ include "jwt-auth.name" . }}
+    helm.sh/chart: {{ include "jwt-auth.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
@@ -15,5 +15,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: {{ include "jwt_auth.name" . }}
+    app.kubernetes.io/name: {{ include "jwt-auth.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}

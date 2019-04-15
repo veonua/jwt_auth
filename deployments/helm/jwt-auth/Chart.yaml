@@ -1,0 +1,5 @@
+apiVersion: v1
+appVersion: "1.0"
+description: Helm chart for jwt-auth, an JWT Token validator for NGINX auth
+name: jwt-auth
+version: 0.1.0
