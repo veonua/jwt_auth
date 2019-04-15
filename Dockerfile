@@ -7,7 +7,8 @@ ENV CONTAINER_USER="jwt" \
     JWT_ISSUER= \
     JWT_KEY_URL= \
     JWT_SCOPE_PARAM=scope \
-    JWT_SCOPE=
+    JWT_SCOPE= \
+    PYTHONUNBUFFERED=1
 
 COPY ./requirements.txt /requirements.txt
 COPY ./jwt_server.py ${HOME_DIR}/__main__.py
