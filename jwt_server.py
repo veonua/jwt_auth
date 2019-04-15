@@ -35,6 +35,12 @@ class JwtHandler(http.server.BaseHTTPRequestHandler):
 
         try:
             authorization = self.headers.get("authorization")
+            if authorization is None:
+                self.send_response(401)
+                self.end_headers()
+                self.wfile.write(bytes("No Authorization header sent", "utf8"))
+                return
+
             auth_header = authorization.split()
 
             if auth_header[0].lower() != 'bearer' or len(auth_header) == 1:
