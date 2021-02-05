@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: "sipdevk8s-10e6"
+    labels:
+        app: "sipdevk8s-10e6"
+spec:
+    type: LoadBalancer
+    ports:
+    - port: 8000
+      targetPort: 8000
+      protocol: TCP
+      name: http
+    selector:
+        app: "sipdevk8s-10e6"
