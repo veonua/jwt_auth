@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "sipdevk8s-10e6"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "sipdevk8s-10e6"
+  template:
+    metadata:
+      labels:
+        app: "sipdevk8s-10e6"
+    spec:
+      containers:
+        - name: "sipdevk8s-10e6"
+          image: "smartinvoiceprocessing.azurecr.io/sipdevk8s"
+          ports:
+          - containerPort: 8000
