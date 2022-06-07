@@ -11,7 +11,9 @@ PORT = 8000
 
 url = sys.argv[1]
 valid_scopes = sys.argv[2:]
-response = urllib.request.urlopen(url + '/.well-known/jwks')
+response = urllib.request.urlopen(url + '/.well-known/openid-configuration')
+config = json.load(response)
+response = urllib.request.urlopen(config['jwks_uri'])
 text = response.read().decode('utf-8')
 j = json.loads(text)
 public_key = jwt.algorithms.RSAAlgorithm.from_jwk(json.dumps(j['keys'][0]))
